@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6628647561870307353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6628647561870307359}
+  - component: {fileID: 6628647561870307358}
+  m_Layer: 0
+  m_Name: ScoreController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6628647561870307359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628647561870307353}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.0666847, y: 26.854471, z: -17.6552}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6628647561870307358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628647561870307353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f1efb3c4a12b64eb1f61535915371f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScore_Text: {fileID: 0}
+  playerScore_Obj: {fileID: 0}
+  msgScore_Text: {fileID: 0}
+  msgScore_Object: {fileID: 0}
+  combo_Text: {fileID: 0}
+  combo_Object: {fileID: 0}
+  setTouchScreenTimer: 5
+  addScore_TS: 8
+  timerIntRunning: 0
+  _statTimer: 0
+  current_score: 0
+  update_score: 0
+  save_score: 0
+  _touchScreenPoints: 0
+  _fullRotationPoints: 0
+  _nearWallPoints: 0
+  _distancePoints: 0
+  coin_divider: 100
+  convertedCoins: 0
+  current_Coins: 0
+  save_Coins: 0
+  firstTotalCoins: 0
+  secondTotalCoins: 0
