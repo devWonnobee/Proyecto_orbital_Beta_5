@@ -20,7 +20,6 @@ public class TapWall : MonoBehaviour
         
         wallCollider = GetComponent<BoxCollider>();
         worldsettings = FindObjectOfType<World_settings>();
-        orbitCollider = GameObject.Find("TapWall/OrbitDetector").GetComponent<BoxCollider>();
 
         active = worldsettings.generalactive;
         if (defaultactive == true)
@@ -31,13 +30,13 @@ public class TapWall : MonoBehaviour
         {
             GetComponent<MeshRenderer>().material = visible;
             wallCollider.enabled = true;
-            orbitCollider.enabled = true;
+
         }
         else
         {
             GetComponent<MeshRenderer>().material = invisible;
             wallCollider.enabled = false;
-            orbitCollider.enabled = false;
+
         }
     }
 
@@ -57,13 +56,13 @@ public class TapWall : MonoBehaviour
             {
                 GetComponent<MeshRenderer>().material = visible;
                 wallCollider.enabled = true;
-                orbitCollider.enabled = true;
+                
             }
             else
             {
                 GetComponent<MeshRenderer>().material = invisible;
                 wallCollider.enabled = false;
-                orbitCollider.enabled = false;
+                
             }    
         }
     }

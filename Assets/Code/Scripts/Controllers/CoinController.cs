@@ -18,72 +18,106 @@ public class CoinController : MonoBehaviour
     [Header ("Coin Stat")]
     public int coin_divider = 100;
     public int convertedCoins;
-    public int current_Coins;
-    public int save_Coins;
+    private int first_farm_coins;
+    private int second_farm_coins;
     public static int firstTotalCoins;
     public static int secondTotalCoins;
     public static int playerTotalCoins;
-    // Start is called before the first frame update
+
     void Start()
     {
         gameController = FindObjectOfType<GameController>();
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Esta funcion recoge las monedas en la partida y lo clasifica del primer partida y continuación
+    /// </summary>
+    /// <param name="getcoins">Recoge las monedas</param>
     public void PlayerCoins(int getcoins) {
-        current_Coins += getcoins;
+        first_farm_coins += getcoins;
         if(gameController.isGameContinued)
         {
-            save_Coins += getcoins;
+            second_farm_coins += getcoins;
         }
     }
-
-    public void CoinConverter(int gScore)
+    /// <summary>
+    /// Esta funcion convierte los puntos en monedas dividido el valor de los puntos entre un valor modificable en la variable coin_divider
+    /// </summary>
+    /// <param name="points">Recoge los puntos</param>
+    /// <returns></returns>
+    public int PointsConverterToCoin(int points)
     {
+        int coins = 0;
+        if (points >= coin_divider)
+        {
+            coins = points / coin_divider;
+        }
+        return coins;
+    }
+    /// <summary>
+    /// Este funcion recoge el valor de puntos en el script script PlayerController y hace la funcion de sumar los datos
+    /// </summary>
+    /// <param name="gScore"></param>
+    public void GetScoreFromPlayerController(int gScore)
+    {
+        current_score = gScore;
         
         if(!gameController.isGameActive)
         {
             if(!gameController.isGameContinued) 
             {
                 Debug.Log("Coin converter 1");
-                convertedCoins = gScore / coin_divider;
-                current_score = gScore; 
-                firstTotalCoins = current_Coins + convertedCoins;
-                playerTotalCoins = firstTotalCoins;
-                msgScore_Object.SetActive(true);
-                Debug.Log("Monedas\n Conseguidas: " + current_Coins + "\n Convertidas: " + convertedCoins + "\n Total: " + firstTotalCoins);
-                msgScore_Text.text = "Monedas\n Conseguidas: " + current_Coins + "\n Convertidas: " + convertedCoins + "\n Total: " + firstTotalCoins;
+                convertedCoins = PointsConverterToCoin(current_score);
+                firstTotalCoins = first_farm_coins + convertedCoins;
+                
             }
             else
             {
                 Debug.Log("Coin converter 2");
                 current_score = gScore - current_score;
                 //secondTotalScore = playerTotalScore - firstTotalScore;
-                convertedCoins = current_score / coin_divider;
-                secondTotalCoins = save_Coins + convertedCoins;
-                playerTotalCoins = secondTotalCoins;
-                msgScore_Object.SetActive(true);
-                msgScore_Text.text = "Monedas \n Total: " + (firstTotalCoins + secondTotalCoins);
-            }
-
-            
+                int convertedCoins = PointsConverterToCoin(current_score);
+                secondTotalCoins = second_farm_coins + convertedCoins;
+            }            
         } 
     }
-
+    /// <summary>
+    /// Todavia no se lo que es
+    /// </summary>
     public void Continue()
     {
         msgScore_Object.SetActive(false);
     }
 
+    /// <summary>
+    /// Mostrar los coins al final de la partida
+    /// </summary>
+    public void PrintTotalCoins()
+    {
+        if(!gameController.isGameContinued)
+        {
+            msgScore_Object.SetActive(true);
+            msgScore_Text.text = "Coins: \n" + first_farm_coins + "\n Converted: \n " + convertedCoins;
+        }
+        else
+        {
+            int playerTotalCoinsToPrint = firstTotalCoins + secondTotalCoins;
+
+            msgScore_Object.SetActive(true);
+            msgScore_Text.text = "Coins: \n " + playerTotalCoinsToPrint;
+
+
+        }
+
+    }
+    /// <summary>
+    /// Recoge el total de monedas de la partida
+    /// </summary>
+    /// <returns>Player Total Coins to save data</returns>
     public int TotalCoins()
     {
-        Debug.Log("Primer "+playerTotalCoins);
+        playerTotalCoins = secondTotalCoins + firstTotalCoins;
         return playerTotalCoins;
 
     }

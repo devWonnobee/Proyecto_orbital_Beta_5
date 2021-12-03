@@ -84,7 +84,7 @@ public class PlayerScorer : MonoBehaviour
     public void FinalPoint()
     {
         Debug.Log("FinalPoint :" + playerTotalScore);
-        coinController.CoinConverter(playerTotalScore);
+        coinController.GetScoreFromPlayerController(playerTotalScore);
     }
 
     public void PlayerScoreIncrementer(int increaseScore, int addedScore)

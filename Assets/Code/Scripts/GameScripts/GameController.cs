@@ -84,6 +84,7 @@ public class GameController : MonoBehaviour
             gameOverPanel.GetComponent<GameOverMenu>().ContinuePosibility();
             isGameActive = false;
             playerScore.FinalPoint();
+            coinController.PrintTotalCoins();
             SaveTotalCoins();
             Debug.Log("Game Over");
         }       
